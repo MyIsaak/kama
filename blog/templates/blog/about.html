@@ -1,0 +1,41 @@
+	{% extends 'blog/home.html' %}
+	{% load crispy_forms_tags %}
+
+		{% block content %}
+			<div class = "content-section">
+				<form method = "POST">
+					{% csrf_token %}
+					<fieldset class= "form-group">
+						<legend class= "border- botoom mb-4">
+							Find Post
+						</legend>
+						<h2> Search by Title </h2>
+						{{ fm|crispy }}
+						<div>
+					
+							{% for post in posts %}
+									<article class="media content-section">
+									<a class="article-title" href="#"><img class = "rounded-circle article-img" src="{{post.author.profile.image.url}}"> </a>
+									  <div class="media-body">
+									    <div class="article-metadata">
+									      <a class="mr-2" href="{%url 'user-post' post.author.username%}">{{ post.author }}</a>
+									      <small class="text-muted">{{ post.date_posted }}</small>
+									    </div>
+									    <h2><a class="article-title" href="{%url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+									    <p class="article-content">{{ post.content }}</p>
+									  </div>
+									 </article>
+							{%endfor%}
+
+						
+					</fieldset>
+					<div class = "form-group">
+						
+						<button class = "btn btn-outline-info", type= "submit"> Find </button>
+						
+					</div>
+				</form>
+				<div class= "border-top pt-3">
+				</div>
+			</div>
+		{%endblock content%}	
