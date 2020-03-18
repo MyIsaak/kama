@@ -3,7 +3,7 @@ chardet==3.0.4
 Django==3.0.3
 django-crispy-forms==1.8.1
 idna==2.6
-Pillow==5.1.0
+Pillow==6.2.0
 pytz==2019.3
 requests==2.18.4
 urllib3==1.22
